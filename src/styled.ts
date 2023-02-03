@@ -24,15 +24,14 @@ export const MainButtonWrapper = styled.div`
 `;
 
 export const MainButton = styled.button`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 400;
   padding: 0.25rem 0.75rem;
   border-radius: 0.25rem;
   line-height: 1.6;
-  color: inherit;
-  width: auto;
+  color: white;
   user-select: none;
   background-color: rgb(19, 23, 32);
   border: 1px solid rgba(250, 250, 250, 0.2);
