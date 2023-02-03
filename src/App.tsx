@@ -13,6 +13,9 @@ function App() {
   const [address, setAddress] = React.useState<string>();
   const [publicKey, setPublicKey] = React.useState<string>();
 
+  const [aliceAddress, setAliceAddress] = React.useState<string>();
+  const [bobAddress, setBobAddress] = React.useState<string>();
+
   const client = new AptosClient(NODE_URL);
   const faucetClient = new FaucetClient(NODE_URL, FAUCET_URL);
 
@@ -32,6 +35,10 @@ function App() {
   const onClickButton = async (e: any) => {
     e.preventDefault();
     init();
+  };
+
+  const onClickHandler = async (e: any) => {
+    e.preventDefault();
     await faucetClient.fundAccount(alice.address(), 200_000_000_000);
     await faucetClient.fundAccount(bob.address(), 100_000_000_000);
     let txnHash = await coinClient.transfer( alice, bob, 700_000_000);
@@ -39,15 +46,17 @@ function App() {
     console.log(`Alice: ${await coinClient.checkBalance(alice)}`);
     console.log(`Bob: ${await coinClient.checkBalance(bob)}`);
     console.log(txnHash);
-    // return this.aptosClient.generateSignSubmitTransaction(address, ‘coin’);
-  };
+  }
 
 
   return (
     <S.MainPageWrapper>
-      <p>Account Address: <code>{ address }</code></p>
-      <p>Public Key: <code>{ publicKey }</code></p>
-      <button onClick={onClickButton}>petra wallet</button>
+      <S.MainTitle>Account Address: <code>{ address }</code></S.MainTitle>
+      <S.MainTitle>Public Key: <code>{ publicKey }</code></S.MainTitle>
+      <S.MainButtonWrapper>
+        <S.MainButton onClick={onClickButton}>connect wallet!</S.MainButton>
+        <S.MainButton onClick={onClickHandler}>transaction coin object!</S.MainButton>
+      </S.MainButtonWrapper>
     </S.MainPageWrapper>
   )
 }
