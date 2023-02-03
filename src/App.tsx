@@ -1,7 +1,7 @@
 import { AptosAccount, AptosClient, CoinClient, FaucetClient, HexString } from 'aptos';
 import React from 'react';
 import { NODE_URL, FAUCET_URL } from './common';
-
+import * as S from "./styled";
 
 const alicePrivateKeyHex = "0x63be0e70346016775e66a323c08b4bcb2ccf23f3caead375eac4c007f6143885"
 const alicePrivateKeyBytes = HexString.ensure(alicePrivateKeyHex).toUint8Array();
@@ -21,7 +21,7 @@ function App() {
   const alice = new AptosAccount(alicePrivateKeyBytes, '0x792bafd3e2ac7bd70d29abcb7b50b8d1e1b4dcb796a96f931225b97df562dc92');
   const bob = new AptosAccount(bobPrivateKeyBytes, '0x9d90570171afcd51fbef4f6c5767cae39c815171761f3d691f2646f63df59459');
 
-  
+
   const init = async () => {
     const { address, publicKey } = await window.aptos.connect();
     setAddress(address);
@@ -44,13 +44,13 @@ function App() {
 
 
   return (
-    <div className="App">
+    <S.MainPageWrapper>
       <p>Account Address: <code>{ address }</code></p>
       <p>Public Key: <code>{ publicKey }</code></p>
       <button onClick={onClickButton}>petra wallet</button>
-    </div>
+    </S.MainPageWrapper>
   )
 }
 
 
-export default App
+export default App;
