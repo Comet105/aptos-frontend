@@ -13,9 +13,6 @@ function App() {
   const [address, setAddress] = React.useState<string>();
   const [publicKey, setPublicKey] = React.useState<string>();
 
-  const [aliceAddress, setAliceAddress] = React.useState<string>();
-  const [bobAddress, setBobAddress] = React.useState<string>();
-
   const client = new AptosClient(NODE_URL);
   const faucetClient = new FaucetClient(NODE_URL, FAUCET_URL);
 
